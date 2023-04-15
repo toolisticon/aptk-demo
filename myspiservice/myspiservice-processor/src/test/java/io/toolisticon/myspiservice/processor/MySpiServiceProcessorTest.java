@@ -81,7 +81,7 @@ public class MySpiServiceProcessorTest {
         compileTestBuilder
                 .addSources(JavaFileObjectUtils.readFromResource("testcases/TestcaseInvalidUsageAttributeMustBeInterface.java"))
                 .compilationShouldFail()
-                .expectErrorMessageThatContains(MySpiServiceProcessorMessages.ERROR_ATTRIBUTE_VALUE_MUST_BE_INTERFACE.getCode())
+                .expectErrorMessageThatContains(MySpiServiceProcessorCompilerMessages.ERROR_ATTRIBUTE_VALUE_MUST_BE_INTERFACE.getCode())
                 .executeTest();
     }
 }

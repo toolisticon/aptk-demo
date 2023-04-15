@@ -1,5 +1,7 @@
 package io.toolisticon.myspiservice.processor;
 
+import io.toolisticon.aptk.compilermessage.api.DeclareCompilerMessage;
+import io.toolisticon.aptk.compilermessage.api.DeclareCompilerMessageCodePrefix;
 import io.toolisticon.aptk.tools.AbstractAnnotationProcessor;
 import io.toolisticon.aptk.tools.FilerUtils;
 import io.toolisticon.aptk.tools.MessagerUtils;
@@ -27,6 +29,7 @@ import java.util.Set;
  */
 
 @SpiService(Processor.class)
+@DeclareCompilerMessageCodePrefix("MySpiService")
 public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
 
     private final static Set<String> SUPPORTED_ANNOTATIONS = createSupportedAnnotationSet(MySpiService.class);
@@ -46,7 +49,7 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
             for (Element element : roundEnv.getElementsAnnotatedWith(MySpiService.class)) {
 
                 TypeElementWrapper wrappedTypeElement = TypeElementWrapper.wrap((TypeElement) element);
-                MySpiServiceWrapper annotation = MySpiServiceWrapper.wrap(wrappedTypeElement.unwrap());
+                MySpiServiceWrapper annotation = MySpiServiceWrapper.wrap(element);
 
                 if (validateUsage(wrappedTypeElement, annotation)) {
                     processAnnotation(wrappedTypeElement, annotation);
@@ -71,6 +74,8 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
 
     }
 
+    @DeclareCompilerMessage(code = "ERROR_002", enumValueName = "ERROR_ATTRIBUTE_VALUE_MUST_BE_INTERFACE", message = "Value must be an interface")
+
     boolean validateUsage(TypeElementWrapper wrappedTypeElement, MySpiServiceWrapper annotation) {
 
 
@@ -79,7 +84,7 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
 
             // write error compiler message pin it to annotations value attribute
             annotation.valueAsAttributeWrapper().compilerMessage().asError()
-                    .write(MySpiServiceProcessorMessages.ERROR_ATTRIBUTE_VALUE_MUST_BE_INTERFACE);
+                    .write(MySpiServiceProcessorCompilerMessages.ERROR_ATTRIBUTE_VALUE_MUST_BE_INTERFACE);
 
             return false;
 
@@ -101,6 +106,7 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
      * @param service                The TypeElement representing the annotated class
      * @param serviceImplementations The MySpiService annotation
      */
+    @DeclareCompilerMessage(code = "ERROR_001", enumValueName = "ERROR_COULD_NOT_CREATE_CONFIG", message = "Could not create config ${0}")
     private void createServiceConfig(String service, Set<String> serviceImplementations) {
 
         Map<String, Object> model = new HashMap<String, Object>();
@@ -113,7 +119,7 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
             resourceWriter.writeTemplate("/MySpiService.tpl", model);
             resourceWriter.close();
         } catch (IOException e) {
-            MessagerUtils.error(null, MySpiServiceProcessorMessages.ERROR_COULD_NOT_CREATE_CONFIG, fileName);
+            MessagerUtils.error(null, MySpiServiceProcessorCompilerMessages.ERROR_COULD_NOT_CREATE_CONFIG, fileName);
         }
     }
 

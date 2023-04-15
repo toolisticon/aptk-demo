@@ -33,6 +33,11 @@
         </dependency>
 
         <dependency>
+            <groupId>io.toolisticon.aptk</groupId>
+            <artifactId>aptk-compilermessages-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.toolisticon.spiap</groupId>
             <artifactId>spiap-api</artifactId>
         </dependency>
@@ -113,6 +118,16 @@
                             <artifactId>aptk-annotationwrapper-api</artifactId>
                             <version>${aptk.version}</version>
                         </path>>
+                        <path>
+                            <groupId>io.toolisticon.aptk</groupId>
+                            <artifactId>aptk-compilermessages-processor</artifactId>
+                            <version>${aptk.version}</version>
+                        </path>
+                        <path>
+                            <groupId>io.toolisticon.aptk</groupId>
+                            <artifactId>aptk-compilermessages-api</artifactId>
+                            <version>${aptk.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
