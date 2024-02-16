@@ -57,7 +57,6 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
 
             }
 
-
         } else {
 
             for (Map.Entry<String, Set<String>> serviceEntry : spiServices.entrySet()) {
@@ -75,7 +74,6 @@ public class MySpiServiceProcessor extends AbstractAnnotationProcessor {
     }
 
     @DeclareCompilerMessage(code = "ERROR_002", enumValueName = "ERROR_ATTRIBUTE_VALUE_MUST_BE_INTERFACE", message = "Value must be an interface")
-
     boolean validateUsage(TypeElementWrapper wrappedTypeElement, MySpiServiceWrapper annotation) {
 
 
