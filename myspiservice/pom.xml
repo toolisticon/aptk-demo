@@ -34,10 +34,8 @@
         </license>
     </licenses>
     
-    <inceptionYear>2022</inceptionYear>
-    <prerequisites>
-        <maven>3.6.0</maven>
-    </prerequisites>
+    <inceptionYear>2024</inceptionYear>
+         
     <!-- TODO: Update issue management -->
     <issueManagement>
         <url>https://github.com/toolisticon/myspiservice/issues</url>
@@ -61,40 +59,41 @@
         <java.compile.source.version>1.8</java.compile.source.version>
         <java.compile.target.version>1.8</java.compile.target.version>
 
-        <!-- project dependency versions -->
-        <cute.version>1.0.1</cute.version>
+        <cute.version>1.7.0</cute.version>
         <spiap.version>0.11.0</spiap.version>
-        <aptk.version>0.22.11</aptk.version>
-        
+        <aptk.version>0.26.0</aptk.version>
+
         <!-- versions of test dependencies -->
-        <junit.version>4.13.1</junit.version>
+        <junit.version>4.13.2</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
         <mockito.version>2.28.2</mockito.version>
-        
+
+
         <!-- plugin versions -->
         <animal-sniffer-maven-plugin.version>1.18</animal-sniffer-maven-plugin.version>
-        <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-        <maven-build-helper-plugin.version>3.0.0</maven-build-helper-plugin.version>
-        <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <maven-dependency-plugin.version>3.0.2</maven-dependency-plugin.version>
-        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
-        <maven-enforcer-plugin.version>3.0.0-M1</maven-enforcer-plugin.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
-        <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>        <!-- do not change to 1.6, it fails! -->
-        <maven-help-plugin.version>2.2</maven-help-plugin.version>
-        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-        <maven-jacoco-plugin.version>0.8.8</maven-jacoco-plugin.version>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <maven-javadoc-plugin.version>3.4.0</maven-javadoc-plugin.version>
-        <maven-processor-plugin.version>2.2.4</maven-processor-plugin.version>
-        <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
-        <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
-        <maven-shade-plugin.version>3.1.0</maven-shade-plugin.version>
-        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
-        <maven-site-plugin.version>3.7</maven-site-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <maven-versions-plugin.version>2.5</maven-versions-plugin.version>
+        <maven-assembly-plugin.version>3.7.1</maven-assembly-plugin.version>
+        <maven-build-helper-plugin.version>3.5.0</maven-build-helper-plugin.version>
+        <maven-checkstyle-plugin.version>3.3.1</maven-checkstyle-plugin.version>
+        <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
+        <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>3.2.5</maven-failsafe-plugin.version>
+        <maven-findbugs-plugin.version>3.0.5</maven-findbugs-plugin.version>
+        <maven-gpg-plugin.version>1.4</maven-gpg-plugin.version>
+        <maven-help-plugin.version>3.4.0</maven-help-plugin.version>
+        <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
+        <maven-jacoco-plugin.version>0.8.11</maven-jacoco-plugin.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
+        <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
+        <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+        <maven-shade-plugin.version>3.5.2</maven-shade-plugin.version>
+        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-versions-plugin.version>2.16.2</maven-versions-plugin.version>
     </properties>
     <build>
         <defaultGoal>clean install</defaultGoal>
@@ -106,12 +105,10 @@
               | (_| (_) | | |  __/ | |_) | | |_| | (_| | | | | \__ \
                \___\___/|_|  \___| | .__/|_|\__,_|\__, |_|_| |_|___/
                                    |_|            |___/              define plugins in latest version - alphabetical order        -->
-        <pluginManagement>            <plugins>                <!-- processor plugin s-->
-                <plugin>
-                    <groupId>org.bsc.maven</groupId>
-                    <artifactId>maven-processor-plugin</artifactId>
-                    <version>${maven-processor-plugin.version}</version>
-                </plugin>
+        <pluginManagement>            
+                 <plugins>                
+                  <!-- processor plugin s-->
+
                 <!-- assembly plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
